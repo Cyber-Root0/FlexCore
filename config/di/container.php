@@ -1,7 +1,7 @@
 <?php
 
 use Slim\Views\Twig;
-
+/* Dependency injection container configuration */
 return [
   'settings' => [
       'twig' => [

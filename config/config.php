@@ -1,3 +1,3 @@
 <?php
 
-define("FIREWALL_STATUS",false);
+define("FIREWALL_STATUS",true);

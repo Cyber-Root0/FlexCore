@@ -4,7 +4,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use FlexCore\middleware\firewall\HandleFirewall;
 use Shieldon\Firewall\Panel;
 use DI\ContainerBuilder;
-use Slim\Views\Twig;
 /**
  * Instantiate App
  *
