@@ -1,0 +1,25 @@
+{
+    "name": "cyber-root0/flexcore",
+    "description": "Uma flexivel base para desenvolvimento de projetos ágeis",
+    "autoload": {
+        "psr-4": {
+            "FlexCore\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bruno Alves",
+            "email": "boteistem@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.0",
+        "slim/slim": "4.*",
+        "guzzlehttp/psr7": "^2",
+        "laminas/laminas-diactoros": "^3.3",
+        "shieldon/shieldon": "2",
+        "php-di/php-di": "^7.0",
+        "php-di/slim-bridge": "^3.4",
+        "slim/twig-view": "^3.3"
+    }
+}
