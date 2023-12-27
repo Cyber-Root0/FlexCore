@@ -1,9 +1,10 @@
 <?php
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use FlexCore\middleware\firewall\HandleFirewall;
+use FlexCore\firewall\HandleFirewall;
 use Shieldon\Firewall\Panel;
 use DI\ContainerBuilder;
+use FlexCore\handle\Logger;
 /**
  * Instantiate App
  *
@@ -14,7 +15,7 @@ use DI\ContainerBuilder;
  // Configuração do container
 $containerBuilder = new ContainerBuilder();
 
-$containerDefinitions = require_once __DIR__ ."/../../config/di/container.php";
+$containerDefinitions = require_once __DIR__ ."/../config/di/container.php";
 $containerBuilder->addDefinitions($containerDefinitions);
 
 // Cria o container
@@ -39,7 +40,7 @@ $app->addRoutingMiddleware();
  * Note: This middleware should be added last. It will not handle any exceptions/errors
  * for middleware added after it.
  */
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+$errorMiddleware = $app->addErrorMiddleware(APP_PRODUCTION, true, true, APP_LOG === true ?  $container->get(Logger::class) : null);
 
 /* Application Firewall */
 if ( FIREWALL_STATUS ){
@@ -49,6 +50,7 @@ if ( FIREWALL_STATUS ){
   $app->add(new HandleFirewall);
 }
 
-require_once(__DIR__.'/../../config/router/router.php');
+
+require_once(__DIR__.'/../config/router/router.php');
 
 $app->run();

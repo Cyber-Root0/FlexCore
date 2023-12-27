@@ -1,9 +1,10 @@
 <?php
 namespace FlexCore\controller\home;
-use FlexCore\core\controller\Controller;
+use FlexCore\handle\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
+use FlexCore\handle\Logger;
 class Home extends Controller
 {           
     /**
@@ -12,7 +13,7 @@ class Home extends Controller
      * @param Twig $twig
      * @return void
      */
-    public function __construct(protected Twig $twig){
+    public function __construct(protected Twig $twig, protected Logger $logger){
 
     }
     /**

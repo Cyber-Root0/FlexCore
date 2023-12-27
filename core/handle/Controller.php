@@ -1,6 +1,6 @@
 <?php
 
-namespace FlexCore\core\controller;
+namespace FlexCore\handle;
 class Controller
 {    
     /**

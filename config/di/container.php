@@ -1,6 +1,7 @@
 <?php
 
 use Slim\Views\Twig;
+use FlexCore\handle\Logger;
 /* Dependency injection container configuration */
 return [
   'settings' => [
@@ -8,6 +9,9 @@ return [
           'template_path' => __DIR__ . '/../../app/view',
           'cache_path' => false, // Desativar o cache para desenvolvimento
       ],
+      'Logger' => [
+        'path'=> APP_LOG_PATH,
+      ]
   ],
   Twig::class => function ($container) {
     $settings = $container->get('settings')['twig'];
@@ -15,4 +19,8 @@ return [
 
     return $twig;
   },
+  Logger::class => function ($container) {
+    $settings = $container->get('settings')['Logger'];
+    return new Logger($settings['path']);
+  }
 ];
