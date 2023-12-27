@@ -7,7 +7,7 @@ return [
   'settings' => [
       'twig' => [
           'template_path' => __DIR__ . '/../../app/view',
-          'cache_path' => false, // Desativar o cache para desenvolvimento
+          'cache_path' => true, // Desativar o cache para desenvolvimento
       ],
       'Logger' => [
         'path'=> APP_LOG_PATH,

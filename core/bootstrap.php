@@ -2,9 +2,13 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use FlexCore\firewall\HandleFirewall;
+use FlexCore\handle\Logger;
 use Shieldon\Firewall\Panel;
 use DI\ContainerBuilder;
-use FlexCore\handle\Logger;
+/** 
+* 
+*/
+date_default_timezone_set('America/Sao_Paulo');
 /**
  * Instantiate App
  *
@@ -14,7 +18,6 @@ use FlexCore\handle\Logger;
  */
  // Configuração do container
 $containerBuilder = new ContainerBuilder();
-
 $containerDefinitions = require_once __DIR__ ."/../config/di/container.php";
 $containerBuilder->addDefinitions($containerDefinitions);
 
@@ -40,7 +43,14 @@ $app->addRoutingMiddleware();
  * Note: This middleware should be added last. It will not handle any exceptions/errors
  * for middleware added after it.
  */
-$errorMiddleware = $app->addErrorMiddleware(APP_PRODUCTION, true, true, APP_LOG === true ?  $container->get(Logger::class) : null);
+$errorMiddleware = $app->addErrorMiddleware(
+  APP_PRODUCTION === true ? false: true, 
+  true, 
+  true, 
+  APP_LOG === true ?  $container->get(Logger::class) : null
+);
+/* Connection Database */
+require_once(__DIR__.'/../config/database/connection.php');
 
 /* Application Firewall */
 if ( FIREWALL_STATUS ){

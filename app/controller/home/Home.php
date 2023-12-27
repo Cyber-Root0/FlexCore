@@ -6,11 +6,12 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\Twig;
 use FlexCore\handle\Logger;
 class Home extends Controller
-{           
+{               
     /**
      * __construct
      *
-     * @param Twig $twig
+     * @param  Twig $twig
+     * @param  Logger $logger
      * @return void
      */
     public function __construct(protected Twig $twig, protected Logger $logger){
@@ -24,7 +25,6 @@ class Home extends Controller
      * @return ResponseInterface
      */
     public function index(ServerRequestInterface $request, ResponseInterface $response): ResponseInterface{
-        
         $this->render($response,'home', []);
         return $response;
     }

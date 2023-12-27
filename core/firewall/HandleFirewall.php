@@ -13,7 +13,7 @@ class HandleFirewall extends Slim4
      */
     public function __construct(string $storage = '', string $panelUri = '')
     {
-        $this->storage = __DIR__."/../../cache/shieldon_firewall";
+        $this->storage = __DIR__."/../../var/cache/shieldon_firewall";
         $this->panelUri = '/firewall/panel/';
 
         if ('' !== $storage) {
